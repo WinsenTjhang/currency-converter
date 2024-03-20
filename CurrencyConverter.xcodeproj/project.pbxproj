@@ -14,6 +14,7 @@
 		70CD5FE62BAAC04700394BB6 /* CurrencyConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD5FE52BAAC04700394BB6 /* CurrencyConverterTests.swift */; };
 		70CD5FF02BAAC04700394BB6 /* CurrencyConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD5FEF2BAAC04700394BB6 /* CurrencyConverterUITests.swift */; };
 		70CD5FF22BAAC04700394BB6 /* CurrencyConverterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD5FF12BAAC04700394BB6 /* CurrencyConverterUITestsLaunchTests.swift */; };
+		70CD60082BAADAF900394BB6 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD60072BAADAF900394BB6 /* Error.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		70CD5FEB2BAAC04700394BB6 /* CurrencyConverterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyConverterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		70CD5FEF2BAAC04700394BB6 /* CurrencyConverterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterUITests.swift; sourceTree = "<group>"; };
 		70CD5FF12BAAC04700394BB6 /* CurrencyConverterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		70CD60072BAADAF900394BB6 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +96,7 @@
 		70CD5FD32BAAC04500394BB6 /* CurrencyConverter */ = {
 			isa = PBXGroup;
 			children = (
-				70CD5FD42BAAC04500394BB6 /* CurrencyConverterApp.swift */,
+				70CD60052BAADA2A00394BB6 /* Code */,
 				70CD5FD62BAAC04500394BB6 /* ContentView.swift */,
 				70CD5FD82BAAC04700394BB6 /* Assets.xcassets */,
 				70CD5FDA2BAAC04700394BB6 /* Preview Content */,
@@ -125,6 +127,87 @@
 				70CD5FF12BAAC04700394BB6 /* CurrencyConverterUITestsLaunchTests.swift */,
 			);
 			path = CurrencyConverterUITests;
+			sourceTree = "<group>";
+		};
+		70CD5FFE2BAAD71100394BB6 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		70CD5FFF2BAAD75600394BB6 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		70CD60002BAAD7D000394BB6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		70CD60012BAAD81300394BB6 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		70CD60022BAAD82B00394BB6 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				70CD60062BAADADE00394BB6 /* Extension */,
+				70CD60072BAADAF900394BB6 /* Error.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		70CD60032BAAD95D00394BB6 /* DetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DetailScreen;
+			sourceTree = "<group>";
+		};
+		70CD60042BAADA1300394BB6 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				70CD60032BAAD95D00394BB6 /* DetailScreen */,
+				70CD5FFE2BAAD71100394BB6 /* MainScreen */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		70CD60052BAADA2A00394BB6 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				70CD60092BAADB2C00394BB6 /* Root */,
+				70CD60042BAADA1300394BB6 /* Features */,
+				70CD60002BAAD7D000394BB6 /* Model */,
+				70CD60012BAAD81300394BB6 /* Custom Views */,
+				70CD5FFF2BAAD75600394BB6 /* Manager */,
+				70CD60022BAAD82B00394BB6 /* Utilities */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		70CD60062BAADADE00394BB6 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		70CD60092BAADB2C00394BB6 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				70CD5FD42BAAC04500394BB6 /* CurrencyConverterApp.swift */,
+			);
+			path = Root;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70CD5FD72BAAC04500394BB6 /* ContentView.swift in Sources */,
+				70CD60082BAADAF900394BB6 /* Error.swift in Sources */,
 				70CD5FD52BAAC04500394BB6 /* CurrencyConverterApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
