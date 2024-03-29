@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FxConvertView: View {
+    @EnvironmentObject var themeManager: ThemeManager
     @Binding var topAmount: Double
     @Binding var bottomAmount: Double
     var viewModel: ConvertDetailViewModel
@@ -25,7 +26,7 @@ struct FxConvertView: View {
                         topAmount = viewModel.convertCurrency(currency: currency ,amount: bottomAmount, fromTop: false)
                     }
             }
-            .foregroundStyle(.blue)
+            .foregroundStyle(themeManager.selectedTheme.fxConvertTextColor)
             .padding()
             
             HStack {
@@ -38,9 +39,15 @@ struct FxConvertView: View {
         }
         .padding()
         .background{
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.white)
-                .shadow(color: Color.gray.opacity(0.4), radius: 10, x: 3, y: 3)
+            if themeManager.selectedTheme == .light {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(themeManager.selectedTheme.backgroundColor)
+                    .shadow(color: Color.gray.opacity(0.4), radius: 10, x: 3, y: 3)
+            } else {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(themeManager.selectedTheme.backgroundColor)
+                    .stroke(Color.blue, lineWidth: 2)
+            }
         }
         
         Spacer()

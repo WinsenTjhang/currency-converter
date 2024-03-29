@@ -11,8 +11,6 @@ import Foundation
 final class MainViewModel {
     let networkManager = NetworkManager()
     var isFetchingData = true
-    var currencyList: [String] = []
-    
     var currencies: [Currency] = []
     
     func fetchData() async throws {
