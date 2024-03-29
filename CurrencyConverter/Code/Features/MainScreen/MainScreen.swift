@@ -38,7 +38,12 @@ struct MainScreen: View {
         }
         .onAppear() {
             Task {
-                try await viewModel.fetchData()
+                do {
+                    try await viewModel.fetchData()
+                } catch {
+                    print(error)
+                    showAlert = true
+                }
             }
         }
         .alert(isPresented: $showAlert) {
