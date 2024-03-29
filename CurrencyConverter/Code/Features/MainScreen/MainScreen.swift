@@ -13,59 +13,38 @@ struct MainScreen: View {
     @State private var selectedIndex = 15
     @State private var showAlert = false
     
+    @EnvironmentObject var themeManager: ThemeManager
+    
     var body: some View {
         NavigationStack {
             if viewModel.isFetchingData {
                 ProgressView()
             } else {
-                Text("AUD Convert")
-                    .font(.title2)
-                
-                List {
-                    Section {
-                        ForEach(viewModel.currencies, id: \.self) { currency in
-                            if currency.buyTT != "N/A" {
-                                NavigationLink(destination: ConvertDetailView(currency: currency)) {
-                                    Text(currency.currencyCode + " - " + currency.country + " " + currency.currencyName)
-                                }
+                VStack {
+                    Text("AUD Convert")
+                        .font(.custom(themeManager.selectedTheme.font, size: 30))
+                        .bold()
+                    
+                    CurrenciesList(viewModel: viewModel)
+                        .font(.custom(themeManager.selectedTheme.font, size: 20))
+                        .toolbar {
+                            ToolbarItem {
+                                ThemeSwitcher()
                             }
                         }
-                    } header: {
-                        Text("Convert from:")
-                            .foregroundStyle(.black)
-                    }
-                    
-                    Spacer()
-                    
-                    Section {
-                        ForEach(viewModel.currencies, id: \.self) { currency in
-                            if currency.buyTT == "N/A" {
-                                NavigationLink(destination: ConvertDetailView(currency: currency)) {
-                                    Text(currency.currencyCode + " - " + currency.country + " " + currency.currencyName)
-                                }
-                            }
-                        }
-                    } header: {
-                        Text("Not available:")
-                            .foregroundStyle(.black)
-                    }
-                    
                 }
-                .listStyle(.plain)
-                
-                
+                .preferredColorScheme(themeManager.selectedTheme.scheme)
             }
         }
         .onAppear() {
             Task {
                 try await viewModel.fetchData()
             }
-            
         }
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Oopss"), message: Text("Something wrong with the application, please restart the app"), dismissButton: .default(Text("OK")))
         }
-    
+        
         
         
     }
