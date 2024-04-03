@@ -35,7 +35,9 @@ struct MainScreen: View {
                 }
                 .preferredColorScheme(themeManager.selectedTheme.scheme)
             }
+            
         }
+        
         .onAppear() {
             Task {
                 do {
@@ -46,11 +48,10 @@ struct MainScreen: View {
                 }
             }
         }
+        
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Oopss"), message: Text("Something wrong with the application, please restart the app"), dismissButton: .default(Text("OK")))
         }
-        
-        
         
     }
 }

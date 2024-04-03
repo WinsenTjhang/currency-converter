@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7047C4B72BB80CE700D5227A /* NumbersOnlyViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047C4B62BB80CE700D5227A /* NumbersOnlyViewModifier.swift */; };
 		70AF46272BB1872100D9322C /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70AF46152BB1872100D9322C /* Montserrat-Italic.ttf */; };
 		70AF46282BB1872100D9322C /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70AF46162BB1872100D9322C /* Montserrat-Medium.ttf */; };
 		70AF46292BB1872100D9322C /* Montserrat-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70AF46172BB1872100D9322C /* Montserrat-BoldItalic.ttf */; };
@@ -85,6 +86,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7047C4B62BB80CE700D5227A /* NumbersOnlyViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersOnlyViewModifier.swift; sourceTree = "<group>"; };
 		70AF46152BB1872100D9322C /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		70AF46162BB1872100D9322C /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		70AF46172BB1872100D9322C /* Montserrat-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -173,6 +175,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7047C4B52BB80CC500D5227A /* CustomViewModifier */ = {
+			isa = PBXGroup;
+			children = (
+				7047C4B62BB80CE700D5227A /* NumbersOnlyViewModifier.swift */,
+			);
+			path = CustomViewModifier;
+			sourceTree = "<group>";
+		};
 		70AF46142BB186FF00D9322C /* Montserrat */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,6 +329,7 @@
 		70CD60032BAAD95D00394BB6 /* ConvertDetailScreen */ = {
 			isa = PBXGroup;
 			children = (
+				7047C4B52BB80CC500D5227A /* CustomViewModifier */,
 				70CD601A2BAD64D600394BB6 /* Views */,
 				70CD60162BAD62AE00394BB6 /* ConvertDetailView.swift */,
 				70CD60182BAD635A00394BB6 /* ConvertDetailViewModel.swift */,
@@ -572,6 +583,7 @@
 				70CD5FD52BAAC04500394BB6 /* CurrencyConverterApp.swift in Sources */,
 				70CD60172BAD62AE00394BB6 /* ConvertDetailView.swift in Sources */,
 				70CD60242BAEB87000394BB6 /* ThemeManager.swift in Sources */,
+				7047C4B72BB80CE700D5227A /* NumbersOnlyViewModifier.swift in Sources */,
 				70CD600D2BAD3E9C00394BB6 /* Currencies.swift in Sources */,
 				70CD60282BAEC22900394BB6 /* CurrenciesList.swift in Sources */,
 				70CD60112BAD3ED700394BB6 /* DateFormatterExtensions.swift in Sources */,

@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct ConvertDetailView: View {
+    @EnvironmentObject var themeManager: ThemeManager
     var viewModel = ConvertDetailViewModel()
     var currency: Currency
-    @State var topAmount: Double = 0.0
-    @State var bottomAmount: Double = 0.0
+    @State var topAmount: String = ""
+    @State var bottomAmount: String = ""
+    @FocusState var isTextFieldFocused: Bool
     
     var body: some View {
         VStack {
@@ -22,10 +24,13 @@ struct ConvertDetailView: View {
             
             if currency.buyTT != "N/A" {
                 AUDConvertView(topAmount: $topAmount, bottomAmount: $bottomAmount ,viewModel: viewModel, currency: currency)
-                FxConvertView(topAmount: $topAmount, bottomAmount: $bottomAmount ,viewModel: viewModel, currency: currency)
+                Spacer()
+                FxConvertView(isTextFieldFocused: _isTextFieldFocused, topAmount: $topAmount, bottomAmount: $bottomAmount ,viewModel: viewModel, currency: currency)
             }
-                
+            
             VStack(alignment: .leading) {
+                Text("Country: \(currency.currencyCode)")
+                Text("Country: \(currency.currencyName)")
                 Text("Country: \(currency.country)")
                 Text("Buy Rate: \(currency.buyTT)")
                 Text("Sell Rate: \(currency.sellTT)")
@@ -37,11 +42,35 @@ struct ConvertDetailView: View {
                 Text("Update Date: \(currency.updateDate, formatter: DateFormatter.displayDate)")
                 Text("Last Updated: \(currency.lastUpdated, formatter: DateFormatter.displayDate)")
             }
-            .frame(maxWidth: .infinity)
-            
+            .padding()
+            .font(.system(size: 15))
+            .background{
+                if themeManager.selectedTheme == .light {
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(themeManager.selectedTheme.backgroundColor)
+                        .shadow(color: Color.gray.opacity(0.4), radius: 10, x: 3, y: 3)
+                } else {
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(themeManager.selectedTheme.backgroundColor)
+                        .stroke(Color.blue, lineWidth: 2)
+                }
+            }
             Spacer()
         }
+        .ignoresSafeArea(.keyboard)
         .padding(.horizontal, 30)
+        .toolbar {
+            ToolbarItem(placement: .keyboard) {
+                Spacer()
+            }
+            ToolbarItem(placement: .keyboard) {
+                Button {
+                    isTextFieldFocused = false
+                } label: {
+                    Image(systemName: "keyboard.chevron.compact.down")
+                }
+            }
+        }
     }
     
 }
