@@ -7,18 +7,17 @@
 
 import SwiftUI
 
-struct ConvertFromView: View {
+struct FxConvertInput: View {
     @EnvironmentObject var themeManager: ThemeManager
-    @EnvironmentObject var conversionManager: ConversionManager
     @FocusState var isTextFieldFocused: Bool
     @Binding var amount: String
-    var viewModel: ConvertDetailViewModel
+    var viewModel: FxConvertViewModel
     let currency: Currency
     
     var body: some View {
         VStack(alignment: .center) {
             HStack {
-                Text(conversionManager.getCurrencyCodeForFrom())
+                Text(viewModel.getCurrencyCodeForFrom(currency: currency))
                 Divider()
                     .frame(height: 40)
                     .background(.gray)
@@ -26,7 +25,6 @@ struct ConvertFromView: View {
                     .numbersOnly($amount)
                     .keyboardType(.decimalPad)
                     .focused($isTextFieldFocused)
-                
             }
             .font(.system(size: 20, weight: .regular))
             .foregroundStyle(themeManager.selectedTheme.fxConvertTextColor)

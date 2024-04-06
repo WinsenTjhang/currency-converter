@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct FxSwapButton: View {
-    @EnvironmentObject var conversionManager: ConversionManager
     
     var body: some View {
         Button {
-            switch conversionManager.selectedType {
+            switch ConversionManager.shared.selectedType {
             case .fromAUD:
-                conversionManager.selectedType = .toAUD
+                ConversionManager.shared.selectedType = .toAUD
             case .toAUD:
-                conversionManager.selectedType = .fromAUD
+                ConversionManager.shared.selectedType = .fromAUD
             }
         } label: {
             Text("Swap")

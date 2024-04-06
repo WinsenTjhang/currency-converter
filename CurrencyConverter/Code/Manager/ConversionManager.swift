@@ -7,28 +7,23 @@
 
 import Foundation
 
-class ConversionManager: ObservableObject {
-    @Published var selectedType: Convert = .toAUD
-    @Published var currency: Currency = .sampleCurrency
+class ConversionManager {
+    static let shared = ConversionManager()
+    var selectedType: Convert = .toAUD
     
     enum Convert {
         case fromAUD
         case toAUD
     }
     
-    func setCurrency(_ currency: Currency) {
-        self.currency = currency
-        print(self.currency)
-    }
-    
-    func getCurrencyCodeForTo() -> String {
+    func getCurrencyCodeForTo(currency: Currency) -> String {
         switch selectedType {
         case .fromAUD: return "\(currency.currencyCode) \(Locale.locale(from: currency.currencyCode)?.currencySymbol ?? currency.currencyCode) "
         case .toAUD: return "AUD $"
         }
     }
     
-    func getCurrencyCodeForFrom() -> String {
+    func getCurrencyCodeForFrom(currency: Currency) -> String {
         switch selectedType {
         case .toAUD: return "\(currency.currencyCode) \(Locale.locale(from: currency.currencyCode)?.currencySymbol ?? currency.currencyCode) "
         case .fromAUD: return "AUD $"

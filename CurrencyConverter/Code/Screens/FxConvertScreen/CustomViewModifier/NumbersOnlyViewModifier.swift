@@ -9,7 +9,6 @@ import SwiftUI
 import Combine
 
 struct NumbersOnlyViewModifier: ViewModifier {
-    
     @Binding var text: String
     
     func body(content: Content) -> some View {

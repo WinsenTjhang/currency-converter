@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainScreen: View {
+struct MainView: View {
     @EnvironmentObject var themeManager: ThemeManager
     @State var viewModel = MainViewModel()
     @State private var amount: Double = 0
@@ -56,7 +56,7 @@ struct MainScreen: View {
 }
 
 #Preview {
-    MainScreen()
+    MainView()
 }
 
 

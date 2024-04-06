@@ -9,11 +9,10 @@ import SwiftUI
 
 struct FxConvertView: View {
     @EnvironmentObject var themeManager: ThemeManager
-    @EnvironmentObject var conversionManager: ConversionManager
-    var viewModel = ConvertDetailViewModel()
-    var currency: Currency
-    @State var amount: String = ""
     @FocusState var isTextFieldFocused: Bool
+    @State var amount: String = ""
+    var viewModel = FxConvertViewModel()
+    var currency: Currency
     
     var body: some View {
         VStack {
@@ -28,16 +27,11 @@ struct FxConvertView: View {
             Spacer()
             
             if currency.buyTT != "N/A" {
-                ConvertToView(amount: $amount ,viewModel: viewModel, currency: currency)
-                    .shadow(color: Color.gray.opacity(0.5), radius: 5, x: 3, y: 3)
-                
+                FxConvertResult(amount: $amount ,viewModel: viewModel, currency: currency)
                 Spacer()
-                
                 FxSwapButton()
-                
                 Spacer()
-                
-                ConvertFromView(isTextFieldFocused: _isTextFieldFocused, amount: $amount ,viewModel: viewModel, currency: currency)
+                FxConvertInput(isTextFieldFocused: _isTextFieldFocused, amount: $amount ,viewModel: viewModel, currency: currency)
             }
             
             CurrencyDetailView(currency: currency)
@@ -58,10 +52,7 @@ struct FxConvertView: View {
                 }
             }
         }
-        .onAppear() {
-            conversionManager.setCurrency(currency)
-            print("set")
-        }
+
     }
     
 }
