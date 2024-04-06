@@ -9,41 +9,43 @@ import SwiftUI
 
 struct CurrenciesList: View {
     @EnvironmentObject var themeManager: ThemeManager
-    let viewModel: MainViewModel
+    let currencies: [Currency]
     
     var body: some View {
         List {
             Section {
-                ForEach(viewModel.currencies, id: \.self) { currency in
+                ForEach(currencies, id: \.self) { currency in
                     if currency.buyTT != "N/A" {
-                        NavigationLink(destination: ConvertDetailView(currency: currency)) {
+                        NavigationLink(destination: FxConvertView(currency: currency)) {
                             Text(currency.currencyCode + " - " + currency.country + " " + currency.currencyName)
+                                .font(themeManager.selectedTheme.font)
                         }
                     }
                 }
             } header: {
                 Text("Convert from:")
+                    .font(.system(size: 15))
             }
             
-            Spacer()
-            
             Section {
-                ForEach(viewModel.currencies, id: \.self) { currency in
+                ForEach(currencies, id: \.self) { currency in
                     if currency.buyTT == "N/A" {
-                        NavigationLink(destination: ConvertDetailView(currency: currency)) {
+                        NavigationLink(destination: FxConvertView(currency: currency)) {
                             Text(currency.currencyCode + " - " + currency.country + " " + currency.currencyName)
+                                .font(themeManager.selectedTheme.font)
                         }
                     }
                 }
             } header: {
                 Text("Not available:")
+                    .font(.system(size: 15))
             }
             
         }
-        .listStyle(.plain)
+        .listStyle(.automatic)
     }
 }
 
-#Preview {
-    CurrenciesList(viewModel: MainViewModel())
-}
+//#Preview {
+//    CurrenciesList(viewModel: MainViewModel())
+//}

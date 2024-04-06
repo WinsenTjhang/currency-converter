@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct AUDConvertView: View {
+struct ConvertToView: View {
     @EnvironmentObject var themeManager: ThemeManager
-    @Binding var topAmount: String
-    @Binding var bottomAmount: String
+    @EnvironmentObject var conversionManager: ConversionManager
+    @Binding var amount: String
     var viewModel: ConvertDetailViewModel
     let currency: Currency
     
@@ -18,11 +18,9 @@ struct AUDConvertView: View {
         VStack(alignment: .leading) {
             HStack {
                 Spacer()
-                Text("AUD")
+                Text("\(conversionManager.getCurrencyCodeForTo())")
                     .font(.system(size: 20))
-                Text("$")
-                    .font(.system(size: 20))
-                Text(String(format: "%.2f", viewModel.convertCurrency(currency: currency, amount: bottomAmount)))
+                Text(String(format: "%.2f", conversionManager.convertCurrency(currency: currency, amount: amount)))
                 Spacer()
             }
             .font(.system(size: 45, weight: .light))

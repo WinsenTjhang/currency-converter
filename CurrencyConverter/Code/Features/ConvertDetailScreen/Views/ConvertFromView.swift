@@ -7,29 +7,28 @@
 
 import SwiftUI
 
-struct FxConvertView: View {
+struct ConvertFromView: View {
     @EnvironmentObject var themeManager: ThemeManager
+    @EnvironmentObject var conversionManager: ConversionManager
     @FocusState var isTextFieldFocused: Bool
-    @Binding var topAmount: String
-    @Binding var bottomAmount: String
+    @Binding var amount: String
     var viewModel: ConvertDetailViewModel
     let currency: Currency
     
     var body: some View {
         VStack(alignment: .center) {
             HStack {
-                Text(" \(Locale.locale(from: currency.currencyCode)?.currencySymbol ?? currency.currencyCode)")
+                Text(conversionManager.getCurrencyCodeForFrom())
                 Divider()
                     .frame(height: 40)
                     .background(.gray)
-                    .padding(.horizontal)
-                TextField("", text: $bottomAmount)
-                    .numbersOnly($bottomAmount)
+                TextField("", text: $amount)
+                    .numbersOnly($amount)
                     .keyboardType(.decimalPad)
                     .focused($isTextFieldFocused)
                 
             }
-            .font(.system(size: 25, weight: .light))
+            .font(.system(size: 20, weight: .regular))
             .foregroundStyle(themeManager.selectedTheme.fxConvertTextColor)
             .padding()
             .background{

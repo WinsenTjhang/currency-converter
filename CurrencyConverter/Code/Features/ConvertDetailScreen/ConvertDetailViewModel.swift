@@ -29,7 +29,6 @@ class ConvertDetailViewModel {
 //    }
     
     func convertCurrency(currency: Currency, amount: String) -> Double {
-        
         return ((Double(amount) ?? 0) / (Double(currency.buyTT) ?? 0))
     }
     

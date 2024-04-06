@@ -44,10 +44,10 @@ class ThemeManager: ObservableObject {
             }
         }
 
-        var font: String {
+        var font: Font {
             switch self {
-            case .light: return "Montserrat-Medium"
-            case .dark: return "RobotoCondensed-Regular"
+            case .light: return .system(size: 20)
+            case .dark: return .custom("RobotoCondensed-Regular", size: 20)
             }
         }
 

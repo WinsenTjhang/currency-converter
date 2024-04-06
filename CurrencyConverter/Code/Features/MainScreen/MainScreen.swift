@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct MainScreen: View {
+    @EnvironmentObject var themeManager: ThemeManager
     @State var viewModel = MainViewModel()
     @State private var amount: Double = 0
-    @State private var selectedIndex = 15
     @State private var showAlert = false
-    
-    @EnvironmentObject var themeManager: ThemeManager
     
     var body: some View {
         NavigationStack {
@@ -22,11 +20,13 @@ struct MainScreen: View {
             } else {
                 VStack {
                     Text("AUD Convert")
-                        .font(.custom(themeManager.selectedTheme.font, size: 30))
+                        .font(.system(size: 30))
+                        .foregroundStyle(.blue)
                         .bold()
+                        .padding()
                     
-                    CurrenciesList(viewModel: viewModel)
-                        .font(.custom(themeManager.selectedTheme.font, size: 20))
+                    CurrenciesList(currencies: viewModel.currencies)
+                        .font(.system(size: 20))
                         .toolbar {
                             ToolbarItem {
                                 ThemeSwitcher()
@@ -37,7 +37,6 @@ struct MainScreen: View {
             }
             
         }
-        
         .onAppear() {
             Task {
                 do {

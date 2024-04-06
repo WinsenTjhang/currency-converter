@@ -20,18 +20,6 @@ struct NumbersOnlyViewModifier: ViewModifier {
                 if filtered != newValue {
                     self.text = filtered
                 }
-//                let decimalSeparator: String = Locale.current.decimalSeparator ?? "."
-//                numbers += decimalSeparator
-//                
-//                if newValue.components(separatedBy: decimalSeparator).count-1 > 1 {
-//                    let filtered = newValue
-//                    self.text = String(filtered.dropLast())
-//                } else {
-//                    let filtered = newValue.filter { numbers.contains($0)}
-//                    if filtered != newValue {
-//                        self.text = filtered
-//                    }
-//                }
             }
     }
 }
