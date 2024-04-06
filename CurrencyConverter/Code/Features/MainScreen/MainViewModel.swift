@@ -19,12 +19,4 @@ final class MainViewModel {
         isFetchingData = false
     }
     
-    
-    func toDouble(index: Int, string: String) -> Double? {
-        if string != "N/A" {
-            return Double(string)
-        }
-        return nil
-    }
-    
 }
