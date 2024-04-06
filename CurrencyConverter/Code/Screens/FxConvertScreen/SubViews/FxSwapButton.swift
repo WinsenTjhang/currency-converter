@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct FxSwapButton: View {
-    @EnvironmentObject var conversionManager: ConversionManager
+    @Binding var selectedType: ConversionType
     
     var body: some View {
         Button {
-            switch conversionManager.selectedType {
+            switch selectedType {
             case .fromAUD:
-                conversionManager.selectedType = .toAUD
+                selectedType = .toAUD
             case .toAUD:
-                conversionManager.selectedType = .fromAUD
+                selectedType = .fromAUD
             }
+            print(selectedType)
         } label: {
             Text("Swap")
             Image(systemName: "arrow.up.arrow.down")
@@ -33,6 +34,6 @@ struct FxSwapButton: View {
     }
 }
 
-#Preview {
-    FxSwapButton()
-}
+//#Preview {
+//    FxSwapButton(ses)
+//}

@@ -7,35 +7,29 @@
 
 import Foundation
 
-class ConversionManager: ObservableObject {
-    @Published var selectedType: Convert = .toAUD
-    @Published var currency: Currency = .sampleCurrency
+enum ConversionType {
+    case fromAUD
+    case toAUD
+}
+
+class ConversionManager {
+    static let shared = ConversionManager()
     
-    enum Convert {
-        case fromAUD
-        case toAUD
-    }
-    
-    func setCurrency(_ currency: Currency) {
-        self.currency = currency
-        print(self.currency)
-    }
-    
-    func getCurrencyCodeForTo() -> String {
+    func getCurrencyCodeForResultView(currency: Currency, selectedType: ConversionType) -> String {
         switch selectedType {
         case .fromAUD: return "\(currency.currencyCode) \(Locale.locale(from: currency.currencyCode)?.currencySymbol ?? currency.currencyCode) "
         case .toAUD: return "AUD $"
         }
     }
     
-    func getCurrencyCodeForFrom() -> String {
+    func getCurrencyCodeForInputView(currency: Currency, selectedType: ConversionType) -> String {
         switch selectedType {
         case .toAUD: return "\(currency.currencyCode) \(Locale.locale(from: currency.currencyCode)?.currencySymbol ?? currency.currencyCode) "
         case .fromAUD: return "AUD $"
         }
     }
     
-    func convertCurrency(currency: Currency, amount: String) -> Double {
+    func convertCurrency(currency: Currency, amount: String, selectedType: ConversionType) -> Double {
         switch selectedType {
         case .toAUD: return ((Double(amount) ?? 0) / (Double(currency.buyTT) ?? 0))
         case .fromAUD: return ((Double(amount) ?? 0) * (Double(currency.buyTT) ?? 0))

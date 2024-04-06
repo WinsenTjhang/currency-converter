@@ -7,20 +7,18 @@
 
 import SwiftUI
 
-struct ConvertToView: View {
+struct FxConvertResult: View {
     @EnvironmentObject var themeManager: ThemeManager
-    @EnvironmentObject var conversionManager: ConversionManager
     @Binding var amount: String
-    var viewModel: ConvertDetailViewModel
-    let currency: Currency
+    @Binding var viewModel: FxConvertViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
                 Spacer()
-                Text("\(conversionManager.getCurrencyCodeForTo())")
+                Text("\(viewModel.currencyCodeForResultView)")
                     .font(.system(size: 20))
-                Text(String(format: "%.2f", conversionManager.convertCurrency(currency: currency, amount: amount)))
+                Text(String(format: "%.2f", viewModel.convertCurrency(amount: amount)))
                 Spacer()
             }
             .font(.system(size: 45, weight: .light))
@@ -28,6 +26,7 @@ struct ConvertToView: View {
             .padding()
         }
         .padding()
+        .shadow(color: Color.gray.opacity(0.5), radius: 5, x: 3, y: 3)
         
     }
 }

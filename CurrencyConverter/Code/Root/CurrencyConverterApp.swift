@@ -10,13 +10,11 @@ import SwiftUI
 @main
 struct CurrencyConverterApp: App {
     @State var themeManager = ThemeManager()
-    @State var conversionManager = ConversionManager()
     
     var body: some Scene {
         WindowGroup {
-            MainScreen()
+            MainView()
                 .environmentObject(themeManager)
-                .environmentObject(conversionManager)
         }
     }
 }
